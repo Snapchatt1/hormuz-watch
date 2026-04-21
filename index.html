@@ -10,7 +10,7 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--bg);color:var(--txt);font-family:'Tajawal',sans-serif;min-height:100vh;}
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,200,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,200,255,0.025) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
-.wrap{position:relative;z-index:1;max-width:920px;margin:0 auto;padding:16px;}
+.wrap{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:16px;}
 .hdr{display:flex;align-items:center;justify-content:space-between;padding:16px 0 20px;border-bottom:1px solid var(--bor);margin-bottom:20px;flex-wrap:wrap;gap:12px;}
 .hdr-l{display:flex;align-items:center;gap:12px;}
 .logo{width:46px;height:46px;background:linear-gradient(135deg,#001830,#003060);border:1px solid var(--ac);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;animation:glow 3s ease-in-out infinite alternate;}
@@ -20,6 +20,15 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .live{display:flex;align-items:center;gap:7px;background:rgba(255,34,68,0.1);border:1px solid rgba(255,34,68,0.4);padding:5px 13px;border-radius:4px;font-size:11px;font-family:'Share Tech Mono',monospace;color:#ff4444;letter-spacing:2px;}
 .ldot{width:7px;height:7px;background:#ff4444;border-radius:50%;animation:lp 1s ease-in-out infinite;}
 @keyframes lp{0%,100%{opacity:1}50%{opacity:0.15}}
+
+/* CLOCKS */
+.clocks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;}
+.clock-card{background:var(--sur);border:1px solid var(--bor);border-radius:8px;padding:12px 16px;text-align:center;}
+.clock-city{font-size:10px;letter-spacing:2px;color:var(--dim);font-family:'Share Tech Mono',monospace;margin-bottom:4px;}
+.clock-time{font-family:'Rajdhani',sans-serif;font-size:28px;color:var(--ac);line-height:1;}
+.clock-date{font-size:11px;color:var(--dim);margin-top:3px;}
+.clock-card.jordan .clock-time{color:var(--grn);}
+
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px;}
 @media(min-width:600px){.stats{grid-template-columns:repeat(4,1fr);}}
 .stat{background:var(--sur);border:1px solid var(--bor);border-radius:8px;padding:13px 15px;overflow:hidden;position:relative;}
@@ -29,6 +38,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .sv{font-family:'Rajdhani',sans-serif;font-size:24px;line-height:1;}
 .sv.bl{color:var(--ac)}.sv.rd{color:var(--red)}.sv.am{color:var(--amb)}.sv.gn{color:var(--grn)}.sv.gl{color:var(--gld)}
 .ss{font-size:11px;color:var(--dim);margin-top:3px;}
+
 .card{background:var(--sur);border:1px solid var(--bor);border-radius:10px;padding:18px 20px;margin-bottom:14px;}
 .stitle{font-family:'Rajdhani',sans-serif;font-size:12px;letter-spacing:3px;color:var(--ac);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
 .stitle::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--bor),transparent);}
@@ -41,60 +51,84 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .bs{background:linear-gradient(135deg,#200010,#100008);border-color:var(--red);color:var(--red);}
 .bn{background:linear-gradient(135deg,#202000,#101000);border-color:var(--amb);color:var(--amb);}
 .strow{display:flex;align-items:center;gap:10px;margin-top:12px;}
-.sdot{width:10px;height:10px;border-radius:50%;background:var(--red);flex-shrink:0;transition:all 0.5s;}
+.sdot{width:10px;height:10px;border-radius:50%;background:var(--red);flex-shrink:0;}
 .sdot.on{background:var(--grn);box-shadow:0 0 8px var(--grn);animation:lp 2s ease-in-out infinite;}
 .pw{margin-top:12px;}
 .pl{display:flex;justify-content:space-between;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--dim);margin-bottom:5px;}
 .pb{height:3px;background:var(--s2);border-radius:2px;overflow:hidden;}
 .pf{height:100%;background:linear-gradient(90deg,var(--ac),var(--grn));border-radius:2px;transition:width 0.1s linear;}
+
 .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:8px;}
 .sc{display:flex;align-items:center;gap:8px;padding:9px 13px;background:var(--s2);border:1px solid var(--bor);border-radius:6px;font-size:13px;cursor:pointer;transition:all 0.2s;user-select:none;}
 .sc.on{border-color:var(--grn);background:rgba(0,255,136,0.05);color:var(--grn);}
 .sc .cd{width:6px;height:6px;border-radius:50%;background:var(--dim);flex-shrink:0;}
 .sc.on .cd{background:var(--grn);box-shadow:0 0 5px var(--grn);}
 .rl{margin-right:auto;font-size:10px;font-family:'Share Tech Mono',monospace;color:var(--dim);}
-.st{font-size:9px;padding:1px 5px;border-radius:3px;font-family:'Share Tech Mono',monospace;}
-.st.int{background:rgba(0,200,255,0.1);color:var(--ac);}
-.st.mde{background:rgba(255,170,0,0.1);color:var(--amb);}
-.st.mil{background:rgba(255,68,68,0.1);color:var(--red);}
-.st.irn{background:rgba(128,0,200,0.15);color:#cc88ff;}
-.st.trump{background:rgba(255,80,0,0.15);color:#ff6644;}
+.stype{font-size:9px;padding:1px 5px;border-radius:3px;font-family:'Share Tech Mono',monospace;}
+.stype.int{background:rgba(0,200,255,0.1);color:var(--ac);}
+.stype.mde{background:rgba(255,170,0,0.1);color:var(--amb);}
+.stype.mil{background:rgba(255,68,68,0.1);color:var(--red);}
+.stype.irn{background:rgba(128,0,200,0.15);color:#cc88ff;}
+.stype.trump{background:rgba(255,80,0,0.15);color:#ff6644;}
+
 .fbox{background:var(--sur);border:1px solid var(--bor);border-radius:10px;overflow:hidden;margin-bottom:14px;}
 .fhdr{display:flex;align-items:center;justify-content:space-between;padding:11px 17px;background:var(--s2);border-bottom:1px solid var(--bor);}
 .fhl{font-family:'Rajdhani',sans-serif;font-size:12px;letter-spacing:2px;color:var(--ac);}
 .fhr{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--dim);}
 .empty{padding:36px;text-align:center;color:var(--dim);font-size:13px;}
-.ni{padding:13px 17px;border-bottom:1px solid rgba(26,58,92,0.35);animation:sli 0.4s ease;position:relative;}
+
+/* NEWS ITEM */
+.ni{padding:16px 18px;border-bottom:1px solid rgba(26,58,92,0.35);animation:sli 0.4s ease;position:relative;}
 @keyframes sli{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:translateX(0)}}
-.ni.brk{border-right:3px solid var(--red);}
-.ni.hi{border-right:3px solid var(--amb);}
-.ni.nm{border-right:3px solid rgba(26,58,92,0.6);}
-.ni.tr{border-right:3px solid #ff6644;background:rgba(255,60,0,0.03);}
-.nmeta{display:flex;align-items:center;gap:7px;margin-bottom:6px;flex-wrap:wrap;}
-.nsrc{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ac);background:rgba(0,200,255,0.07);padding:2px 7px;border-radius:3px;border:1px solid rgba(0,200,255,0.2);}
+.ni.brk{border-right:4px solid var(--red);}
+.ni.hi{border-right:4px solid var(--amb);}
+.ni.nm{border-right:4px solid rgba(26,58,92,0.6);}
+.ni.tr{border-right:4px solid #ff6644;background:rgba(255,60,0,0.02);}
+.ni.deal{border-right:4px solid var(--gld);background:rgba(255,215,0,0.02);}
+
+/* Breaking banner */
+.brk-banner{background:rgba(255,34,68,0.12);border:1px solid rgba(255,34,68,0.3);border-radius:5px;padding:5px 12px;margin-bottom:10px;font-size:12px;color:var(--red);font-weight:700;letter-spacing:1px;display:inline-block;}
+
+.nmeta{display:flex;align-items:center;gap:7px;margin-bottom:8px;flex-wrap:wrap;}
+.nsrc{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--ac);background:rgba(0,200,255,0.07);padding:2px 8px;border-radius:3px;border:1px solid rgba(0,200,255,0.2);}
 .nsrc.tr{color:#ff6644;background:rgba(255,60,0,0.08);border-color:rgba(255,60,0,0.25);}
+.nsrc.deal{color:var(--gld);background:rgba(255,215,0,0.08);border-color:rgba(255,215,0,0.25);}
 .ntm{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--dim);}
-.ntg{font-size:10px;padding:2px 7px;border-radius:3px;font-family:'Share Tech Mono',monospace;}
+.ntg{font-size:10px;padding:2px 8px;border-radius:3px;font-family:'Share Tech Mono',monospace;}
 .ntg.b{background:rgba(255,34,68,0.15);color:var(--red);border:1px solid rgba(255,34,68,0.3);}
 .ntg.m{background:rgba(255,170,0,0.1);color:var(--amb);border:1px solid rgba(255,170,0,0.3);}
 .ntg.d{background:rgba(0,200,255,0.07);color:var(--ac);border:1px solid rgba(0,200,255,0.2);}
 .ntg.e{background:rgba(0,255,136,0.07);color:var(--grn);border:1px solid rgba(0,255,136,0.2);}
 .ntg.t{background:rgba(255,60,0,0.12);color:#ff6644;border:1px solid rgba(255,60,0,0.3);}
-.nar{font-size:15px;font-weight:700;color:#ddeef8;margin-bottom:4px;line-height:1.5;}
-.nen{font-size:12px;color:var(--dim);font-style:italic;margin-bottom:8px;line-height:1.5;}
-.gbox{padding:10px 12px;border-radius:7px;border:1px solid rgba(255,215,0,0.25);background:rgba(255,215,0,0.04);margin-top:4px;}
-.gtitle{font-size:10px;color:var(--gld);font-family:'Share Tech Mono',monospace;margin-bottom:5px;letter-spacing:1px;}
-.gimp{font-size:13px;font-weight:700;margin-bottom:5px;}
-.gimp.up{color:var(--grn);}
-.gimp.dn{color:var(--red);}
-.gimp.nt{color:var(--amb);}
-.gbar{height:5px;background:var(--s2);border-radius:3px;overflow:hidden;margin-bottom:5px;}
-.gbarf{height:100%;border-radius:3px;}
-.gbarf.up{background:linear-gradient(90deg,#00aa44,var(--grn));}
-.gbarf.dn{background:linear-gradient(90deg,#aa0000,var(--red));}
-.gbarf.nt{background:linear-gradient(90deg,#aa7700,var(--amb));}
-.greason{font-size:12px;color:var(--dim);line-height:1.5;}
-.sent{font-size:10px;font-family:'Share Tech Mono',monospace;color:var(--grn);margin-top:5px;}
+.ntg.dl{background:rgba(255,215,0,0.1);color:var(--gld);border:1px solid rgba(255,215,0,0.3);}
+
+/* Times row */
+.times-row{display:flex;gap:12px;margin-bottom:8px;flex-wrap:wrap;}
+.time-chip{font-size:11px;font-family:'Share Tech Mono',monospace;background:rgba(0,0,0,0.3);border:1px solid var(--bor);padding:3px 10px;border-radius:4px;color:var(--dim);}
+.time-chip span{color:var(--txt);}
+
+.nar{font-size:16px;font-weight:900;color:#eef6ff;margin-bottom:6px;line-height:1.6;}
+.nen{font-size:12px;color:var(--dim);font-style:italic;margin-bottom:10px;line-height:1.5;}
+
+/* Analysis box */
+.analysis{background:rgba(0,0,0,0.25);border:1px solid var(--bor);border-radius:8px;padding:12px 14px;margin-top:8px;}
+.analysis-title{font-size:11px;letter-spacing:2px;color:var(--dim);font-family:'Share Tech Mono',monospace;margin-bottom:10px;}
+.impact-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px;}
+.impact-box{background:rgba(0,0,0,0.2);border-radius:6px;padding:10px 12px;border:1px solid var(--bor);}
+.impact-label{font-size:10px;color:var(--dim);font-family:'Share Tech Mono',monospace;margin-bottom:4px;}
+.impact-val{font-size:14px;font-weight:700;margin-bottom:4px;}
+.impact-val.up{color:var(--grn);}
+.impact-val.dn{color:var(--red);}
+.impact-val.nt{color:var(--amb);}
+.ibar{height:4px;background:var(--s2);border-radius:2px;overflow:hidden;margin-bottom:4px;}
+.ibarf{height:100%;border-radius:2px;}
+.ibarf.up{background:linear-gradient(90deg,#00aa44,var(--grn));}
+.ibarf.dn{background:linear-gradient(90deg,#aa0000,var(--red));}
+.ibarf.nt{background:linear-gradient(90deg,#aa7700,var(--amb));}
+.impact-why{font-size:11px;color:var(--dim);line-height:1.5;}
+.news-summary{font-size:13px;color:var(--txt);line-height:1.7;border-top:1px solid var(--bor);padding-top:8px;margin-top:8px;}
+
+.sent{font-size:10px;font-family:'Share Tech Mono',monospace;color:var(--grn);margin-top:6px;}
 .alert{display:none;padding:11px 18px;background:rgba(255,34,68,0.1);border:1px solid rgba(255,34,68,0.5);border-radius:8px;margin-bottom:14px;font-size:14px;color:#ff8899;align-items:center;gap:10px;}
 .alert.show{display:flex;animation:ap 2s ease-in-out infinite;}
 @keyframes ap{0%,100%{border-color:rgba(255,34,68,0.4)}50%{border-color:rgba(255,34,68,0.9);}}
@@ -115,7 +149,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
     <div class="logo">🌊</div>
     <div class="logo-t">
       <h1>HORMUZ WATCH</h1>
-      <p>US–Iran · Hormuz · Trump · Gold Impact</p>
+      <p>US–Iran · Hormuz · Trump · Gold · Dollar</p>
     </div>
   </div>
   <div class="live"><div class="ldot"></div>LIVE</div>
@@ -123,13 +157,29 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 
 <div class="alert" id="alertBox"><span>⚡</span><span id="alertTxt"></span></div>
 
+<!-- CLOCKS -->
+<div class="clocks">
+  <div class="clock-card">
+    <div class="clock-city">🇺🇸 واشنطن D.C.</div>
+    <div class="clock-time" id="clkWash">--:--:--</div>
+    <div class="clock-date" id="datWash">--</div>
+  </div>
+  <div class="clock-card jordan">
+    <div class="clock-city">🇯🇴 عمّان، الأردن</div>
+    <div class="clock-time" id="clkJord">--:--:--</div>
+    <div class="clock-date" id="datJord">--</div>
+  </div>
+</div>
+
+<!-- STATS -->
 <div class="stats">
   <div class="stat"><div class="sl">أخبار اليوم</div><div class="sv bl" id="sTotal">0</div><div class="ss"><span id="sSrc">0</span> مصدر</div></div>
   <div class="stat"><div class="sl">أُرسل تيليغرام</div><div class="sv gn" id="sSent">0</div><div class="ss">آخر: <span id="sLast">--:--</span></div></div>
-  <div class="stat"><div class="sl">فحوصات</div><div class="sv am" id="sChecks">0</div><div class="ss">منذ البداية</div></div>
-  <div class="stat"><div class="sl">الذهب الآن</div><div class="sv gl" id="sGold">--</div><div class="ss" id="sGoldSub">في الانتظار</div></div>
+  <div class="stat"><div class="sl">ذهب</div><div class="sv gl" id="sGold">--</div><div class="ss" id="sGoldSub">في الانتظار</div></div>
+  <div class="stat"><div class="sl">دولار</div><div class="sv am" id="sDollar">--</div><div class="ss" id="sDollarSub">في الانتظار</div></div>
 </div>
 
+<!-- CONTROLS -->
 <div class="card">
   <div class="stitle">⏱ سرعة الفحص</div>
   <div class="sprow">
@@ -155,14 +205,16 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
   </div>
 </div>
 
+<!-- SOURCES -->
 <div class="card">
   <div class="stitle">📡 المصادر</div>
   <div class="sgrid" id="sgrid"></div>
 </div>
 
+<!-- FEED -->
 <div class="fbox">
   <div class="fhdr">
-    <div class="fhl">📰 LIVE FEED + 🥇 تأثير الذهب</div>
+    <div class="fhl">📰 LIVE FEED</div>
     <div class="fhr" id="fcount">0 خبر</div>
   </div>
   <div id="feed"><div class="empty">اضغط ▶ تشغيل لبدء المراقبة</div></div>
@@ -208,19 +260,21 @@ var NEWS_POOL = [
   {e:"IRGC conducts live-fire naval drill near Hormuz shipping lanes",src:"Defense News",p:"high"},
   {e:"Pentagon confirms US Navy tracking Iranian fast-attack boats in Gulf",src:"Navy Times",p:"high"},
   {e:"Nuclear talks between Iran and US envoys collapse in Oman",src:"BBC World",p:"breaking"},
-  {e:"Oil prices spike 4 percent as Hormuz tanker route disruption fears grow",src:"Wall St Journal",p:"high"},
+  {e:"Oil prices spike as Hormuz tanker route disruption fears grow",src:"Wall St Journal",p:"high"},
   {e:"Iran seizes Marshall Islands-flagged tanker near Strait of Hormuz",src:"AP News",p:"breaking"},
   {e:"US carrier strike group enters Gulf of Oman in show of force",src:"Defense News",p:"high"},
-  {e:"Iran says it will not negotiate under threats and nuclear program continues",src:"IRNA (IR)",p:"high"},
-  {e:"US Treasury imposes new round of sanctions on Iranian oil exporters",src:"Reuters",p:"normal"},
-  {e:"IRGC navy commander warns of crushing response to any US provocation",src:"Tasnim (IR)",p:"high"},
-  {e:"US MQ-9 drone shadowed by Iranian jets over Persian Gulf",src:"AP News",p:"high"},
-  {e:"Israel warns Iran nuclear threshold reached and urges immediate US action",src:"Jerusalem Post",p:"breaking"},
-  {e:"Saudi Arabia scrambles jets after Iranian ballistic missile test near border",src:"العربية",p:"high"},
-  {e:"Secret US-Iran back-channel talks reportedly underway in Qatar",src:"Middle East Eye",p:"normal"},
-  {e:"Iran begins enriching uranium to 84 percent purity at Fordow facility",src:"Reuters",p:"breaking"},
-  {e:"US Fifth Fleet conducts freedom of navigation operation through Hormuz",src:"Navy Times",p:"normal"},
-  {e:"Houthi forces fire anti-ship missiles into Gulf shipping corridor",src:"Al Jazeera",p:"breaking"},
+  {e:"Iran says nuclear program continues despite US pressure",src:"IRNA (IR)",p:"high"},
+  {e:"US Treasury imposes new sanctions on Iranian oil exporters",src:"Reuters",p:"normal"},
+  {e:"IRGC navy commander warns of crushing response to US provocation",src:"Tasnim (IR)",p:"high"},
+  {e:"US drone shadowed by Iranian jets over Persian Gulf",src:"AP News",p:"high"},
+  {e:"Israel warns Iran nuclear threshold reached",src:"Jerusalem Post",p:"breaking"},
+  {e:"Saudi Arabia scrambles jets after Iranian missile test",src:"العربية",p:"high"},
+  {e:"US-Iran back-channel talks reportedly underway in Qatar",src:"Middle East Eye",p:"normal"},
+  {e:"Iran enriching uranium to 84 percent purity at Fordow",src:"Reuters",p:"breaking"},
+  {e:"US and Iran signal openness to deal framework in Oman talks",src:"Reuters",p:"high"},
+  {e:"Iran agrees to pause enrichment as part of preliminary deal",src:"BBC World",p:"breaking"},
+  {e:"Washington and Tehran close to nuclear agreement says mediator",src:"AP News",p:"breaking"},
+  {e:"Houthi forces fire missiles into Gulf shipping corridor",src:"Al Jazeera",p:"breaking"},
 ];
 
 var TRUMP_POSTS = [
@@ -231,35 +285,52 @@ var TRUMP_POSTS = [
   "IRAN DEAL IS DEAD. Maximum pressure until they come to the table on OUR terms. No nuclear weapons PERIOD!",
   "Proud of our incredible US Navy in the Persian Gulf. Iran knows what would happen if they make a mistake!",
   "The Revolutionary Guard IRGC is a terrorist organization. Every move they make is being watched. Do not test the United States!",
-  "Iran economy is collapsing. Their currency is worthless. All they have to do is call and we can make a GREAT deal!",
+  "Iran economy is collapsing. All they have to do is call and we can make a GREAT deal for both countries!",
+  "Big news coming on Iran very soon. Stay tuned!",
+  "We are very close to a deal with Iran. They want it, we want it. Good things happening!",
 ];
 
 var activeSrc = {};
 SOURCES.forEach(function(s){ activeSrc[s.id] = true; });
 
 var state = {
-  active: false,
-  speed: 10000,
-  seen: {},
-  total: 0,
-  sent: 0,
-  checks: 0,
-  timerId: null,
-  progTimer: null,
-  progStart: 0,
-  poolIdx: 0,
-  trumpIdx: 0
+  active:false, speed:10000,
+  seen:{}, total:0, sent:0, checks:0,
+  timerId:null, progTimer:null, clockTimer:null,
+  progStart:0, poolIdx:0, trumpIdx:0
 };
 
+// ===================== CLOCKS =====================
+function updateClocks() {
+  var now = new Date();
+
+  var washOpts = {timeZone:'America/New_York', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false};
+  var jordOpts = {timeZone:'Asia/Amman', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false};
+  var washDateOpts = {timeZone:'America/New_York', weekday:'long', year:'numeric', month:'long', day:'numeric'};
+  var jordDateOpts = {timeZone:'Asia/Amman', weekday:'long', year:'numeric', month:'long', day:'numeric'};
+
+  document.getElementById('clkWash').textContent = now.toLocaleTimeString('ar-US', washOpts);
+  document.getElementById('clkJord').textContent = now.toLocaleTimeString('ar-JO', jordOpts);
+  document.getElementById('datWash').textContent = now.toLocaleDateString('ar-US', washDateOpts);
+  document.getElementById('datJord').textContent = now.toLocaleDateString('ar-JO', jordDateOpts);
+}
+
+function getTimestamps() {
+  var now = new Date();
+  var wash = now.toLocaleTimeString('ar', {timeZone:'America/New_York', hour:'2-digit', minute:'2-digit', hour12:true});
+  var jord = now.toLocaleTimeString('ar', {timeZone:'Asia/Amman', hour:'2-digit', minute:'2-digit', hour12:true});
+  return {wash: wash, jord: jord};
+}
+
+// ===================== SOURCES =====================
 function renderSrc() {
   var html = '';
   SOURCES.forEach(function(s) {
     var on = activeSrc[s.id] ? 'on' : '';
     html += '<div class="sc ' + on + '" onclick="toggleSrc(\'' + s.id + '\')">';
-    html += '<div class="cd"></div>';
-    html += '<span>' + s.name + '</span>';
+    html += '<div class="cd"></div><span>' + s.name + '</span>';
     html += '<span class="rl">' + s.rel + '</span>';
-    html += '<span class="st ' + s.type + '">' + s.type.toUpperCase() + '</span>';
+    html += '<span class="stype ' + s.type + '">' + s.type.toUpperCase() + '</span>';
     html += '</div>';
   });
   document.getElementById('sgrid').innerHTML = html;
@@ -273,6 +344,7 @@ function toggleSrc(id) {
   renderSrc();
 }
 
+// ===================== SPEED =====================
 function fmtMs(ms) {
   if(ms < 2000) return 'ثانية واحدة';
   if(ms < 60000) return (ms/1000) + ' ثواني';
@@ -281,11 +353,9 @@ function fmtMs(ms) {
 
 function setSpd(ms) {
   state.speed = ms;
-  var btns = document.querySelectorAll('.sb');
-  btns.forEach(function(b) {
+  document.querySelectorAll('.sb').forEach(function(b) {
     b.classList.toggle('on', parseInt(b.getAttribute('data-ms')) === ms);
   });
-  log('سرعة الفحص: كل ' + fmtMs(ms), 'info');
   if(state.active) {
     clearInterval(state.timerId);
     state.timerId = setInterval(fetchNow, ms);
@@ -308,19 +378,65 @@ function resetProg() {
   }, 100);
 }
 
+// ===================== TELEGRAM =====================
 function sendTg(item) {
-  var emojis = {'عاجل 🔴':'🚨','عسكري':'⚔️','دبلوماسي':'🤝','اقتصادي':'💰','ترامب 🇺🇸':'🇺🇸','عام':'📰'};
-  var icon = emojis[item.tag] || '📰';
+  var ts = getTimestamps();
+
+  var tagEmoji = {
+    'عاجل 🔴':'🚨 عاجل',
+    'عسكري':'⚔️ عسكري',
+    'دبلوماسي':'🤝 دبلوماسي',
+    'اقتصادي':'💰 اقتصادي',
+    'ترامب 🇺🇸':'🇺🇸 ترامب',
+    'اتفاق 🟡':'🟡 مفاوضات',
+    'عام':'📰 عام'
+  };
+
   var gIcon = item.gold.dir === 'up' ? '📈' : (item.gold.dir === 'down' ? '📉' : '➡️');
-  var gWord = item.gold.dir === 'up' ? 'ضغط صعودي' : (item.gold.dir === 'down' ? 'ضغط هبوطي' : 'تأثير محايد');
+  var dIcon = item.dollar.dir === 'up' ? '💵📈' : (item.dollar.dir === 'down' ? '💵📉' : '💵➡️');
+  var gWord = item.gold.dir === 'up' ? 'ارتفاع متوقع' : (item.gold.dir === 'down' ? 'انخفاض متوقع' : 'مستقر');
+  var dWord = item.dollar.dir === 'up' ? 'تعزز' : (item.dollar.dir === 'down' ? 'ضعف' : 'مستقر');
+
   var bars = '';
-  for(var i = 0; i < 5; i++) { bars += i < Math.round(item.gold.str/2) ? '█' : '░'; }
+  for(var i = 0; i < 5; i++) { bars += i < Math.round(item.gold.str/2) ? '🟨' : '⬛'; }
+
+  var sep = '━━━━━━━━━━━━━━━━━━━━━';
 
   var msg;
   if(item.trump) {
-    msg = '🇺🇸 *تصريح ترامب على Truth Social*\n\n📢 *' + item.ar + '*\n\n_"' + item.en.substring(0,180) + '"_\n\n' + gIcon + ' *تأثير الذهب:* ' + gWord + '\n📊 الشدة: ' + bars + ' ' + item.gold.str + '/10\n💡 ' + item.gold.why + '\n\n🕐 ' + item.time + '\n🌊 _Hormuz Watch_';
+    msg =
+      '🇺🇸 *تصريح ترامب | Truth Social*\n' +
+      sep + '\n\n' +
+      '📢 *' + item.ar + '*\n\n' +
+      '_' + item.en.substring(0,200) + '_\n\n' +
+      sep + '\n' +
+      '🕐 واشنطن: *' + ts.wash + '* | عمّان: *' + ts.jord + '*\n\n' +
+      '━━━━ تحليل الأسواق ━━━━\n' +
+      gIcon + ' *الذهب:* ' + gWord + ' | شدة التأثير: ' + bars + ' ' + item.gold.str + '/10\n' +
+      '💡 ' + item.gold.why + '\n\n' +
+      dIcon + ' *الدولار:* ' + dWord + ' | شدة التأثير: ' + item.dollar.str + '/10\n' +
+      '💡 ' + item.dollar.why + '\n\n' +
+      sep + '\n' +
+      '🌊 *Hormuz Watch* | رصد لحظي';
   } else {
-    msg = icon + ' *' + item.tag + '*\n\n*' + item.ar + '*\n_' + item.en + '_\n\n' + gIcon + ' *تأثير الذهب:* ' + gWord + '\n📊 الشدة: ' + bars + ' ' + item.gold.str + '/10\n💡 ' + item.gold.why + '\n\n📡 ' + item.src + ' | 🕐 ' + item.time + '\n🌊 _Hormuz Watch_';
+    var tagLine = tagEmoji[item.tag] || '📰';
+    var brkLine = item.pri === 'breaking' ? '🔴 *خبر عاجل*\n' : '';
+    msg =
+      brkLine +
+      '*' + tagLine + '* | ' + item.src + '\n' +
+      sep + '\n\n' +
+      '🔷 *' + item.ar + '*\n\n' +
+      '🔹 _' + item.en + '_\n\n' +
+      (item.summary ? '📝 ' + item.summary + '\n\n' : '') +
+      sep + '\n' +
+      '🕐 واشنطن: *' + ts.wash + '* | عمّان: *' + ts.jord + '*\n\n' +
+      '━━━━ تأثير على الأسواق ━━━━\n' +
+      gIcon + ' *الذهب:* ' + gWord + ' | ' + bars + ' ' + item.gold.str + '/10\n' +
+      '💡 ' + item.gold.why + '\n\n' +
+      dIcon + ' *الدولار:* ' + dWord + ' | ' + item.dollar.str + '/10\n' +
+      '💡 ' + item.dollar.why + '\n\n' +
+      sep + '\n' +
+      '🌊 *Hormuz Watch* | رصد لحظي';
   }
 
   fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
@@ -340,18 +456,21 @@ function sendTg(item) {
   }).catch(function(e){ log('❌ ' + e.message, 'err'); });
 }
 
+// ===================== AI PROCESS =====================
 function aiProcess(en, src, callback) {
   var isTrump = src === 'Trump · Truth Social';
+  var isDeal = en.toLowerCase().indexOf('deal') !== -1 || en.toLowerCase().indexOf('agreement') !== -1 || en.toLowerCase().indexOf('talks') !== -1;
+
   var prompt = isTrump
-    ? 'ترجم هذا التصريح لترامب للعربية بدقة مع الحفاظ على أسلوبه القوي. ثم حلل تأثيره على سعر الذهب.\nأعطني JSON فقط بدون أي نص آخر:\n{"ar":"الترجمة العربية","tag":"ترامب 🇺🇸","pri":"high","rel":true,"gold":{"dir":"up","str":8,"why":"سبب التأثير على الذهب بالعربي"}}\n\nالتصريح: "' + en + '"'
-    : 'أنت محلل أخبار ومحلل ذهب. ترجم عنوان الخبر للعربية وحلل تأثيره على سعر الذهب.\nأعطني JSON فقط بدون أي نص آخر:\n{"ar":"ترجمة دقيقة","tag":"عاجل 🔴 أو عسكري أو دبلوماسي أو اقتصادي أو عام","pri":"breaking أو high أو normal","rel":true,"gold":{"dir":"up أو down أو neutral","str":رقم من 1 الى 10,"why":"سبب التأثير على الذهب بالعربي"}}\n\nالعنوان: "' + en + '"\nالمصدر: ' + src;
+    ? 'أنت محلل سياسي واقتصادي. ترجم هذا التصريح لترامب للعربية الفصحى بدقة مع الحفاظ على أسلوبه القوي والمباشر، ثم حلل تأثيره على الذهب والدولار.\nأعطني JSON فقط بدون أي نص آخر:\n{"ar":"الترجمة العربية الكاملة","tag":"ترامب 🇺🇸","pri":"high","rel":true,"summary":"ملخص تحريري احترافي بجملتين","gold":{"dir":"up أو down أو neutral","str":رقم 1-10,"why":"سبب تأثيره على الذهب"},"dollar":{"dir":"up أو down أو neutral","str":رقم 1-10,"why":"سبب تأثيره على الدولار"}}\n\nالتصريح: "' + en + '"'
+    : 'أنت محرر أخبار في قناة الجزيرة ومحلل اقتصادي متخصص. العنوان يخص الأزمة الأمريكية الإيرانية ومضيق هرمز.\nترجم للعربية الفصحى، اكتب ملخصاً تحريرياً احترافياً، وحلل تأثير الخبر على الذهب والدولار.\nأعطني JSON فقط بدون أي نص آخر:\n{"ar":"ترجمة عربية فصحى احترافية كاملة للعنوان","tag":"عاجل 🔴 أو عسكري أو دبلوماسي أو اقتصادي أو اتفاق 🟡 أو عام","pri":"breaking أو high أو normal","rel":true أو false,"summary":"ملخص تحريري احترافي بأسلوب الجزيرة في جملتين يشرح أهمية الخبر وسياقه","gold":{"dir":"up أو down أو neutral","str":رقم 1-10,"why":"شرح مفصل لتأثير الخبر على سعر الذهب"},"dollar":{"dir":"up أو down أو neutral","str":رقم 1-10,"why":"شرح مفصل لتأثير الخبر على قيمة الدولار"}}\n\nالعنوان: "' + en + '"\nالمصدر: ' + src;
 
   fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
       model: 'claude-sonnet-4-20250514',
-      max_tokens: 400,
+      max_tokens: 600,
       messages: [{role: 'user', content: prompt}]
     })
   }).then(function(r){ return r.json(); }).then(function(d) {
@@ -359,16 +478,27 @@ function aiProcess(en, src, callback) {
       var txt = d.content[0].text.trim().replace(/```json|```/g,'').trim();
       callback(JSON.parse(txt));
     } catch(e) {
-      callback({ar:en, tag:'عام', pri:'normal', rel:true, gold:{dir:'neutral', str:3, why:'تأثير محدود على الذهب'}});
+      callback({
+        ar: en, tag: 'عام', pri: 'normal', rel: true,
+        summary: 'تطور جديد في ملف التوترات الأمريكية الإيرانية.',
+        gold:{dir:'neutral',str:3,why:'تأثير محدود على الذهب في الوقت الراهن'},
+        dollar:{dir:'neutral',str:3,why:'تأثير محدود على الدولار في الوقت الراهن'}
+      });
     }
   }).catch(function() {
-    callback({ar:en, tag:'عام', pri:'normal', rel:true, gold:{dir:'neutral', str:3, why:'تأثير محدود على الذهب'}});
+    callback({
+      ar: en, tag: 'عام', pri: 'normal', rel: true,
+      summary: 'تطور جديد في ملف التوترات الأمريكية الإيرانية.',
+      gold:{dir:'neutral',str:3,why:'تأثير محدود على الذهب'},
+      dollar:{dir:'neutral',str:3,why:'تأثير محدود على الدولار'}
+    });
   });
 }
 
+// ===================== FETCH =====================
 function fetchNow() {
   state.checks++;
-  document.getElementById('sChecks').textContent = state.checks;
+  document.getElementById('sChecks') && (document.getElementById('sChecks').textContent = state.checks);
   log('🔍 فحص #' + state.checks, 'info');
   resetProg();
 
@@ -383,12 +513,15 @@ function fetchNow() {
         var item = {
           en: raw.e, ar: ai.ar, tag: ai.tag || 'عام',
           pri: ai.pri || raw.p, src: raw.src,
+          summary: ai.summary || '',
           time: new Date().toLocaleTimeString('ar'),
-          id: Date.now() + 'n', trump: false,
-          gold: ai.gold || {dir:'neutral', str:3, why:'تأثير محدود على الذهب'}
+          id: Date.now() + '' + Math.random(),
+          trump: false,
+          gold: ai.gold || {dir:'neutral',str:3,why:'تأثير محدود على الذهب'},
+          dollar: ai.dollar || {dir:'neutral',str:3,why:'تأثير محدود على الدولار'}
         };
         addNews(item);
-        updateGoldStat(item.gold);
+        updateMarketStats(item);
         sendTg(item);
         if(item.pri === 'breaking') showAlert('عاجل: ' + item.ar);
       }
@@ -397,6 +530,7 @@ function fetchNow() {
     log('لا أخبار جديدة في هذا الفحص', 'info');
   }
 
+  // Trump post
   if(Math.random() < 0.3 && activeSrc['truth']) {
     var post = TRUMP_POSTS[state.trumpIdx % TRUMP_POSTS.length];
     state.trumpIdx++;
@@ -408,24 +542,36 @@ function fetchNow() {
           en: post, ar: ai.ar || post,
           tag: 'ترامب 🇺🇸', pri: 'high',
           src: 'Trump · Truth Social',
+          summary: ai.summary || '',
           time: new Date().toLocaleTimeString('ar'),
-          id: Date.now() + 't', trump: true,
-          gold: ai.gold || {dir:'up', str:7, why:'تصريحات ترامب تزيد التوتر وترفع الطلب على الذهب'}
+          id: Date.now() + '' + Math.random(),
+          trump: true,
+          gold: ai.gold || {dir:'up',str:7,why:'تصريحات ترامب تزيد حدة التوتر فيرتفع الطلب على الذهب كملاذ آمن'},
+          dollar: ai.dollar || {dir:'up',str:6,why:'التصريحات الحادة تعزز الدولار كعملة ملاذ آمن'}
         };
         addNews(item);
-        updateGoldStat(item.gold);
+        updateMarketStats(item);
         sendTg(item);
       });
     }
   }
 }
 
-function updateGoldStat(gold) {
-  var el = document.getElementById('sGold');
-  var sub = document.getElementById('sGoldSub');
-  var arrow = gold.dir === 'up' ? '📈' : (gold.dir === 'down' ? '📉' : '➡️');
-  el.textContent = arrow + ' ' + gold.str + '/10';
-  sub.textContent = gold.dir === 'up' ? 'ضغط صعودي' : (gold.dir === 'down' ? 'ضغط هبوطي' : 'محايد');
+// ===================== UI =====================
+function updateMarketStats(item) {
+  var gEl = document.getElementById('sGold');
+  var gSub = document.getElementById('sGoldSub');
+  var dEl = document.getElementById('sDollar');
+  var dSub = document.getElementById('sDollarSub');
+
+  var gIcon = item.gold.dir === 'up' ? '📈' : (item.gold.dir === 'down' ? '📉' : '➡️');
+  var dIcon = item.dollar.dir === 'up' ? '📈' : (item.dollar.dir === 'down' ? '📉' : '➡️');
+
+  gEl.textContent = gIcon + ' ' + item.gold.str + '/10';
+  gSub.textContent = item.gold.dir === 'up' ? 'ضغط صعودي' : (item.gold.dir === 'down' ? 'ضغط هبوطي' : 'مستقر');
+
+  dEl.textContent = dIcon + ' ' + item.dollar.str + '/10';
+  dSub.textContent = item.dollar.dir === 'up' ? 'تعزز' : (item.dollar.dir === 'down' ? 'ضعف' : 'مستقر');
 }
 
 function addNews(item) {
@@ -436,29 +582,54 @@ function addNews(item) {
   var feed = document.getElementById('feed');
   if(feed.querySelector('.empty')) feed.innerHTML = '';
 
-  var tagClass = {'عاجل 🔴':'b','عسكري':'m','دبلوماسي':'d','اقتصادي':'e','ترامب 🇺🇸':'t'};
-  var rowClass = item.trump ? 'tr' : (item.pri === 'breaking' ? 'brk' : (item.pri === 'high' ? 'hi' : 'nm'));
+  var tagClass = {'عاجل 🔴':'b','عسكري':'m','دبلوماسي':'d','اقتصادي':'e','ترامب 🇺🇸':'t','اتفاق 🟡':'dl'};
+  var rowClass = item.trump ? 'tr' : (item.tag === 'اتفاق 🟡' ? 'deal' : (item.pri === 'breaking' ? 'brk' : (item.pri === 'high' ? 'hi' : 'nm')));
+
   var gDir = item.gold.dir;
+  var dDir = item.dollar.dir;
   var gIcon = gDir === 'up' ? '📈' : (gDir === 'down' ? '📉' : '➡️');
-  var gWord = gDir === 'up' ? 'ضغط صعودي على الذهب' : (gDir === 'down' ? 'ضغط هبوطي على الذهب' : 'تأثير محايد على الذهب');
-  var gPct = item.gold.str * 10;
+  var dIcon = dDir === 'up' ? '📈' : (dDir === 'down' ? '📉' : '➡️');
+  var gWord = gDir === 'up' ? 'ضغط صعودي' : (gDir === 'down' ? 'ضغط هبوطي' : 'مستقر');
+  var dWord = dDir === 'up' ? 'تعزز' : (dDir === 'down' ? 'ضعف' : 'مستقر');
+
+  var ts = getTimestamps();
+  var srcClass = item.trump ? 'tr' : (item.tag === 'اتفاق 🟡' ? 'deal' : '');
+
+  var brkBanner = item.pri === 'breaking' ? '<div class="brk-banner">⚡ خبر عاجل</div>' : '';
 
   var div = document.createElement('div');
   div.className = 'ni ' + rowClass;
   div.id = 'n' + item.id;
   div.innerHTML =
+    brkBanner +
     '<div class="nmeta">' +
-      '<span class="nsrc' + (item.trump ? ' tr' : '') + '">' + item.src.toUpperCase() + '</span>' +
+      '<span class="nsrc ' + srcClass + '">' + item.src.toUpperCase() + '</span>' +
       '<span class="ntm">' + item.time + '</span>' +
       '<span class="ntg ' + (tagClass[item.tag] || '') + '">' + item.tag + '</span>' +
     '</div>' +
+    '<div class="times-row">' +
+      '<div class="time-chip">🇺🇸 واشنطن: <span>' + ts.wash + '</span></div>' +
+      '<div class="time-chip">🇯🇴 عمّان: <span>' + ts.jord + '</span></div>' +
+    '</div>' +
     '<div class="nar">' + item.ar + '</div>' +
-    '<div class="nen">' + (item.en.length > 120 ? item.en.substring(0,120) + '...' : item.en) + '</div>' +
-    '<div class="gbox">' +
-      '<div class="gtitle">🥇 تأثير على الذهب</div>' +
-      '<div class="gimp ' + gDir + '">' + gIcon + ' ' + gWord + ' — شدة ' + item.gold.str + '/10</div>' +
-      '<div class="gbar"><div class="gbarf ' + gDir + '" style="width:' + gPct + '%"></div></div>' +
-      '<div class="greason">💡 ' + item.gold.why + '</div>' +
+    '<div class="nen">' + (item.en.length > 120 ? item.en.substring(0,120)+'...' : item.en) + '</div>' +
+    '<div class="analysis">' +
+      '<div class="analysis-title">📊 التحليل والتأثير على الأسواق</div>' +
+      (item.summary ? '<div class="news-summary">' + item.summary + '</div>' : '') +
+      '<div class="impact-row">' +
+        '<div class="impact-box">' +
+          '<div class="impact-label">🥇 الذهب</div>' +
+          '<div class="impact-val ' + gDir + '">' + gIcon + ' ' + gWord + ' — ' + item.gold.str + '/10</div>' +
+          '<div class="ibar"><div class="ibarf ' + gDir + '" style="width:' + (item.gold.str*10) + '%"></div></div>' +
+          '<div class="impact-why">' + item.gold.why + '</div>' +
+        '</div>' +
+        '<div class="impact-box">' +
+          '<div class="impact-label">💵 الدولار</div>' +
+          '<div class="impact-val ' + dDir + '">' + dIcon + ' ' + dWord + ' — ' + item.dollar.str + '/10</div>' +
+          '<div class="ibar"><div class="ibarf ' + dDir + '" style="width:' + (item.dollar.str*10) + '%"></div></div>' +
+          '<div class="impact-why">' + item.dollar.why + '</div>' +
+        '</div>' +
+      '</div>' +
     '</div>';
 
   feed.insertBefore(div, feed.firstChild);
@@ -499,7 +670,7 @@ function startBot() {
   document.getElementById('stxt').textContent = '🟢 شغال — كل ' + fmtMs(state.speed);
   document.getElementById('stxt').style.color = 'var(--grn)';
   log('🚀 البوت شغال! كل ' + fmtMs(state.speed), 'ok');
-  log('🥇 تحليل الذهب مفعّل لكل خبر', 'ok');
+  log('🥇 تحليل الذهب والدولار مفعّل', 'ok');
   log('🇺🇸 Truth Social ترامب مفعّل', 'ok');
   fetchNow();
   state.timerId = setInterval(fetchNow, state.speed);
@@ -518,10 +689,14 @@ function stopBot() {
   log('⏹ البوت أُوقف', 'warn');
 }
 
+// ===================== INIT =====================
 renderSrc();
-log('🌊 Hormuz Watch جاهز', 'info');
-log('🔑 Token مربوط: ...' + BOT_TOKEN.slice(-8), 'ok');
-log('💬 Chat ID مربوط: ' + CHAT_ID, 'ok');
+updateClocks();
+state.clockTimer = setInterval(updateClocks, 1000);
+log('🌊 Hormuz Watch v3 جاهز', 'info');
+log('🔑 Token: ...' + BOT_TOKEN.slice(-8), 'ok');
+log('💬 Chat ID: ' + CHAT_ID, 'ok');
+log('🕐 ساعة واشنطن والأردن تعمل', 'ok');
 log('اضغط ▶ تشغيل', 'info');
 </script>
 </body>
